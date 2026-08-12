@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sorty - Trouve ton prochain événement</title>
+  <title>Sorty — Trouve ton prochain événement</title>
 
   <meta
     name="description"
-    content="Sorty permet de découvrir les événements près de chez vous et de trouver facilement où réserver vos billets."
+    content="Sorty vous aide à découvrir les événements près de chez vous : concerts, spectacles, festivals, sports, culture et sorties."
   >
 
   <style>
@@ -18,100 +18,226 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #f6f8f4;
+      background: #f5f8f3;
       color: #17251b;
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(135deg, #1f6b3a, #4f8f43);
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 30%),
+        linear-gradient(135deg, #174f2d, #2f7d3f 55%, #6c9143);
       color: white;
       text-align: center;
-      padding: 70px 20px;
+      padding: 80px 20px 90px;
     }
 
     .logo {
+      width: 105px;
+      height: 105px;
+      margin: 0 auto 25px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.14);
+      border: 2px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 72px;
       font-weight: 900;
-      margin-bottom: 10px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.18);
     }
 
     header h1 {
-      font-size: 34px;
-      margin-bottom: 15px;
+      font-size: 42px;
+      line-height: 1.15;
+      margin-bottom: 18px;
     }
 
     header p {
-      max-width: 650px;
+      max-width: 700px;
       margin: auto;
-      font-size: 18px;
+      font-size: 19px;
       opacity: 0.95;
     }
 
+    .hero-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 28px;
+      background: white;
+      color: #1f6b3a;
+      text-decoration: none;
+      border-radius: 14px;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-2px);
+    }
+
     main {
-      max-width: 1000px;
+      max-width: 1050px;
       margin: auto;
       padding: 50px 20px;
     }
 
     section {
       background: white;
-      border-radius: 20px;
-      padding: 35px;
+      border-radius: 22px;
+      padding: 38px;
       margin-bottom: 25px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
     }
 
     h2 {
       color: #1f6b3a;
-      margin-bottom: 15px;
-      font-size: 27px;
+      margin-bottom: 16px;
+      font-size: 28px;
+    }
+
+    section p {
+      color: #465249;
     }
 
     .categories {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 15px;
-      margin-top: 25px;
+      margin-top: 28px;
     }
 
     .category {
       background: #edf5ec;
-      padding: 18px;
-      border-radius: 15px;
+      border: 1px solid #dcebd9;
+      padding: 20px 15px;
+      border-radius: 16px;
       text-align: center;
       font-weight: bold;
+      color: #245b32;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .step {
+      padding: 25px;
+      background: #f7faf6;
+      border-radius: 18px;
+      border: 1px solid #e2ebe0;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #2f7d3f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+      color: #1f6b3a;
     }
 
     .booking {
-      background: linear-gradient(135deg, #eaf5e8, #f7faf5);
+      background:
+        linear-gradient(135deg, #eaf5e8, #f8fbf6);
       border: 2px solid #d5e8d2;
     }
 
-    .booking strong {
-      color: #1f6b3a;
+    .booking-box {
+      margin-top: 25px;
+      padding: 25px;
+      background: white;
+      border-radius: 18px;
+      border: 1px solid #dcebd9;
+    }
+
+    .booking-button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 13px 22px;
+      background: #2f7d3f;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 800;
+      opacity: 0.7;
+      cursor: default;
+    }
+
+    .partner {
+      text-align: center;
+    }
+
+    .partner p {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .notice {
+      margin-top: 20px;
+      padding: 15px 18px;
+      background: #f1f5ef;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #59635a;
     }
 
     footer {
       text-align: center;
-      padding: 35px 20px;
-      color: #657065;
+      padding: 40px 20px;
+      color: #687168;
       font-size: 14px;
     }
 
-    @media (max-width: 600px) {
-      .logo {
-        font-size: 58px;
+    footer a {
+      color: #2f7d3f;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 60px 20px 70px;
       }
 
       header h1 {
-        font-size: 27px;
+        font-size: 31px;
+      }
+
+      header p {
+        font-size: 17px;
+      }
+
+      .logo {
+        width: 90px;
+        height: 90px;
+        font-size: 60px;
       }
 
       section {
-        padding: 25px;
+        padding: 27px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -119,76 +245,195 @@
 
 <body>
 
+  <!-- HERO -->
+
   <header>
     <div class="logo">S</div>
 
     <h1>Découvre ton prochain événement</h1>
 
     <p>
-      Sorty vous aide à trouver les événements près de chez vous
-      ou dans les villes de votre choix.
+      Concert, spectacle, festival, sport ou sortie culturelle :
+      Sorty t'aide à trouver ce qui se passe près de chez toi.
     </p>
+
+    <a class="hero-button" href="#evenements">
+      Découvrir les sorties
+    </a>
   </header>
 
+
   <main>
+
+    <!-- SORTY -->
 
     <section>
       <h2>🎉 Sorty, c'est quoi ?</h2>
 
       <p>
         Sorty est une application dédiée à la découverte d'événements.
-        Concerts, spectacles, fêtes, sports, culture et bien plus encore :
-        trouvez facilement des sorties autour de vous.
-      </p>
-    </section>
-
-    <section>
-      <h2>🔎 Trouvez votre sortie</h2>
-
-      <p>
-        Recherchez des événements par ville et découvrez les activités
-        disponibles autour de vous.
+        Notre objectif est simple : réunir au même endroit les sorties
+        disponibles dans différentes villes et permettre de trouver
+        rapidement une activité qui vous correspond.
       </p>
 
       <div class="categories">
         <div class="category">🎵 Concerts</div>
         <div class="category">🎭 Spectacles</div>
-        <div class="category">🎉 Fêtes</div>
+        <div class="category">🎉 Festivals</div>
         <div class="category">⚽ Sports</div>
         <div class="category">🏛️ Culture</div>
         <div class="category">🎟️ Billetterie</div>
       </div>
     </section>
 
+
+    <!-- COMMENT ÇA MARCHE -->
+
+    <section id="evenements">
+      <h2>🔎 Comment ça marche ?</h2>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">1</div>
+
+          <h3>📍 Choisis ta ville</h3>
+
+          <p>
+            Recherche les événements dans ta ville ou autour de toi.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+
+          <h3>🎉 Trouve ton événement</h3>
+
+          <p>
+            Découvre les concerts, spectacles, festivals, sports
+            et autres sorties disponibles.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+
+          <h3>🎟️ Réserve</h3>
+
+          <p>
+            Lorsqu'une billetterie est disponible, accède au
+            partenaire pour réserver ton billet.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- BILLETTERIE -->
+
     <section class="booking">
+
       <h2>🎟️ Réserver un billet</h2>
 
       <p>
-        Lorsqu'un événement nécessite une réservation, Sorty peut vous
-        rediriger vers le site du partenaire proposant la billetterie.
+        Certains événements proposés sur Sorty peuvent nécessiter
+        l'achat d'un billet.
       </p>
 
-      <p style="margin-top: 15px;">
-        <strong>Sorty ne vend pas directement les billets.</strong>
-        La réservation et le paiement sont réalisés sur le site
-        du partenaire concerné.
-      </p>
+      <div class="booking-box">
+
+        <h3>Une billetterie directement depuis Sorty</h3>
+
+        <p>
+          Lorsqu'une billetterie partenaire est disponible,
+          Sorty vous redirige vers le site du partenaire afin
+          de consulter les disponibilités et effectuer votre réservation.
+        </p>
+
+        <!--
+          FUTUR LIEN AFFILIÉ
+
+          Le véritable lien de tracking du partenaire sera placé
+          ici lorsque le programme d'affiliation sera validé.
+
+          Exemple :
+          https://partenaire.com/...?tracking=...
+        -->
+
+        <a class="booking-button">
+          🎟️ Réserver un billet
+        </a>
+
+        <div class="notice">
+          Sorty ne vend pas directement les billets.
+          La réservation, le paiement et la gestion des billets
+          sont effectués sur le site du partenaire.
+        </div>
+
+      </div>
+
     </section>
 
+
+    <!-- PARTENAIRES -->
+
+    <section class="partner">
+
+      <h2>🤝 Nos partenaires</h2>
+
+      <p>
+        Sorty pourra proposer des liens vers différentes plateformes
+        de billetterie afin de faciliter l'accès aux réservations
+        des événements.
+      </p>
+
+      <div class="notice">
+        Les liens vers les partenaires pourront être des liens
+        d'affiliation. Sorty peut recevoir une commission lorsqu'un
+        utilisateur effectue un achat éligible après avoir suivi
+        un lien partenaire. Le prix payé par l'utilisateur
+        n'est pas nécessairement augmenté.
+      </div>
+
+    </section>
+
+
+    <!-- APPLICATION -->
+
     <section>
+
       <h2>📱 L'application Sorty</h2>
 
       <p>
-        Sorty est actuellement en développement. L'application a pour
-        objectif de réunir au même endroit les événements disponibles
-        dans différentes villes et de faciliter leur découverte.
+        L'application Sorty est actuellement en développement.
+        Elle a pour objectif de permettre de rechercher des événements
+        par ville, catégorie et localisation, puis de consulter
+        les informations pratiques de chaque événement.
       </p>
+
+      <div class="notice">
+        🚀 De nouvelles fonctionnalités seront ajoutées progressivement.
+      </div>
+
     </section>
 
   </main>
 
+
+  <!-- FOOTER -->
+
   <footer>
-    © 2026 Sorty — Tous droits réservés.
+
+    <p>
+      © 2026 Sorty — Tous droits réservés.
+    </p>
+
+    <p style="margin-top: 8px;">
+      Découvrir des événements simplement.
+    </p>
+
   </footer>
 
 </body>
