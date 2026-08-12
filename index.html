@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sorty - Trouve ton prochain événement</title>
+
+  <meta
+    name="description"
+    content="Sorty permet de découvrir les événements près de chez vous et de trouver facilement où réserver vos billets."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f8f4;
+      color: #17251b;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1f6b3a, #4f8f43);
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .logo {
+      font-size: 72px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 35px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    h2 {
+      color: #1f6b3a;
+      margin-bottom: 15px;
+      font-size: 27px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .category {
+      background: #edf5ec;
+      padding: 18px;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .booking {
+      background: linear-gradient(135deg, #eaf5e8, #f7faf5);
+      border: 2px solid #d5e8d2;
+    }
+
+    .booking strong {
+      color: #1f6b3a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      color: #657065;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 58px;
+      }
+
+      header h1 {
+        font-size: 27px;
+      }
+
+      section {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">S</div>
+
+    <h1>Découvre ton prochain événement</h1>
+
+    <p>
+      Sorty vous aide à trouver les événements près de chez vous
+      ou dans les villes de votre choix.
+    </p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>🎉 Sorty, c'est quoi ?</h2>
+
+      <p>
+        Sorty est une application dédiée à la découverte d'événements.
+        Concerts, spectacles, fêtes, sports, culture et bien plus encore :
+        trouvez facilement des sorties autour de vous.
+      </p>
+    </section>
+
+    <section>
+      <h2>🔎 Trouvez votre sortie</h2>
+
+      <p>
+        Recherchez des événements par ville et découvrez les activités
+        disponibles autour de vous.
+      </p>
+
+      <div class="categories">
+        <div class="category">🎵 Concerts</div>
+        <div class="category">🎭 Spectacles</div>
+        <div class="category">🎉 Fêtes</div>
+        <div class="category">⚽ Sports</div>
+        <div class="category">🏛️ Culture</div>
+        <div class="category">🎟️ Billetterie</div>
+      </div>
+    </section>
+
+    <section class="booking">
+      <h2>🎟️ Réserver un billet</h2>
+
+      <p>
+        Lorsqu'un événement nécessite une réservation, Sorty peut vous
+        rediriger vers le site du partenaire proposant la billetterie.
+      </p>
+
+      <p style="margin-top: 15px;">
+        <strong>Sorty ne vend pas directement les billets.</strong>
+        La réservation et le paiement sont réalisés sur le site
+        du partenaire concerné.
+      </p>
+    </section>
+
+    <section>
+      <h2>📱 L'application Sorty</h2>
+
+      <p>
+        Sorty est actuellement en développement. L'application a pour
+        objectif de réunir au même endroit les événements disponibles
+        dans différentes villes et de faciliter leur découverte.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Sorty — Tous droits réservés.
+  </footer>
+
+</body>
+</html>
