@@ -35,7 +35,7 @@
     .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
     .nav { display:flex; align-items:center; justify-content:space-between; padding:22px 0; }
     .brand { display:flex; align-items:center; gap:11px; color:var(--forest); font-size:22px; font-weight:850; letter-spacing:-.04em; text-decoration:none; }
-    .brand-mark { display:grid; place-items:center; width:40px; height:40px; border-radius:14px; background:var(--green); color:white; font-size:24px; font-weight:900; box-shadow:0 8px 18px #21643a33; }
+    .brand-logo { display:block; width:40px; height:40px; border-radius:12px; object-fit:cover; box-shadow:0 8px 18px #21643a33; }
     .nav-links { display:flex; gap:26px; align-items:center; color:var(--muted); font-size:14px; font-weight:650; }
     .nav-links a { text-decoration:none; }
     .nav-links a:hover { color:var(--green); }
@@ -107,7 +107,7 @@
 <body>
   <div class="wrap">
     <nav class="nav" aria-label="Navigation principale">
-      <a class="brand" href="#" aria-label="Sorty, accueil"><span class="brand-mark">S</span><span>sorty</span></a>
+      <a class="brand" href="#" aria-label="Sorty, accueil"><img class="brand-logo" src="assets/sorty-logo.png" alt="" width="40" height="40"><span>sorty</span></a>
       <div class="nav-links">
         <a href="#app">L’application</a>
         <a href="#suite">La suite</a>
