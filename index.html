@@ -1,440 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Sorty — Trouve ton prochain événement</title>
-
-  <meta
-    name="description"
-    content="Sorty vous aide à découvrir les événements près de chez vous : concerts, spectacles, festivals, sports, culture et sorties."
-  >
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c2a">
+  <meta name="description" content="Sorty aide à trouver des événements et des idées de sorties près de chez soi. Explorez, gardez vos favoris et accédez aux billetteries partenaires.">
+  <title>Sorty — Trouve ta prochaine sortie</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      color-scheme: light;
+      --forest: #123c2a;
+      --green: #21643a;
+      --green-2: #34764a;
+      --mint: #e7efe8;
+      --paper: #f6f8f6;
+      --white: #fff;
+      --ink: #183126;
+      --muted: #68766c;
+      --gold: #d9a928;
+      --line: #dfe7e0;
+      --shadow: 0 24px 70px rgba(18,60,42,.12);
+      --radius: 24px;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f8f3;
-      color: #17251b;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
     }
-
-    header {
-      background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 30%),
-        linear-gradient(135deg, #174f2d, #2f7d3f 55%, #6c9143);
-      color: white;
-      text-align: center;
-      padding: 80px 20px 90px;
-    }
-
-    .logo {
-      width: 105px;
-      height: 105px;
-      margin: 0 auto 25px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.14);
-      border: 2px solid rgba(255,255,255,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 72px;
-      font-weight: 900;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.18);
-    }
-
-    header h1 {
-      font-size: 42px;
-      line-height: 1.15;
-      margin-bottom: 18px;
-    }
-
-    header p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 19px;
-      opacity: 0.95;
-    }
-
-    .hero-button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 28px;
-      background: white;
-      color: #1f6b3a;
-      text-decoration: none;
-      border-radius: 14px;
-      font-weight: 800;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      transition: transform 0.2s;
-    }
-
-    .hero-button:hover {
-      transform: translateY(-2px);
-    }
-
-    main {
-      max-width: 1050px;
-      margin: auto;
-      padding: 50px 20px;
-    }
-
-    section {
-      background: white;
-      border-radius: 22px;
-      padding: 38px;
-      margin-bottom: 25px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-    }
-
-    h2 {
-      color: #1f6b3a;
-      margin-bottom: 16px;
-      font-size: 28px;
-    }
-
-    section p {
-      color: #465249;
-    }
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
-      margin-top: 28px;
-    }
-
-    .category {
-      background: #edf5ec;
-      border: 1px solid #dcebd9;
-      padding: 20px 15px;
-      border-radius: 16px;
-      text-align: center;
-      font-weight: bold;
-      color: #245b32;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 25px;
-    }
-
-    .step {
-      padding: 25px;
-      background: #f7faf6;
-      border-radius: 18px;
-      border: 1px solid #e2ebe0;
-    }
-
-    .step-number {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #2f7d3f;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      margin-bottom: 15px;
-    }
-
-    .step h3 {
-      margin-bottom: 8px;
-      color: #1f6b3a;
-    }
-
-    .booking {
-      background:
-        linear-gradient(135deg, #eaf5e8, #f8fbf6);
-      border: 2px solid #d5e8d2;
-    }
-
-    .booking-box {
-      margin-top: 25px;
-      padding: 25px;
-      background: white;
-      border-radius: 18px;
-      border: 1px solid #dcebd9;
-    }
-
-    .booking-button {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 13px 22px;
-      background: #2f7d3f;
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 800;
-      opacity: 0.7;
-      cursor: default;
-    }
-
-    .partner {
-      text-align: center;
-    }
-
-    .partner p {
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .notice {
-      margin-top: 20px;
-      padding: 15px 18px;
-      background: #f1f5ef;
-      border-radius: 12px;
-      font-size: 14px;
-      color: #59635a;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: #687168;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #2f7d3f;
-      text-decoration: none;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        padding: 60px 20px 70px;
-      }
-
-      header h1 {
-        font-size: 31px;
-      }
-
-      header p {
-        font-size: 17px;
-      }
-
-      .logo {
-        width: 90px;
-        height: 90px;
-        font-size: 60px;
-      }
-
-      section {
-        padding: 27px;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:22px 0; }
+    .brand { display:flex; align-items:center; gap:11px; color:var(--forest); font-size:22px; font-weight:850; letter-spacing:-.04em; text-decoration:none; }
+    .brand-mark { display:grid; place-items:center; width:40px; height:40px; border-radius:14px; background:var(--green); color:white; font-size:24px; font-weight:900; box-shadow:0 8px 18px #21643a33; }
+    .nav-links { display:flex; gap:26px; align-items:center; color:var(--muted); font-size:14px; font-weight:650; }
+    .nav-links a { text-decoration:none; }
+    .nav-links a:hover { color:var(--green); }
+    .nav-cta,.button { display:inline-flex; align-items:center; justify-content:center; border-radius:999px; padding:12px 19px; background:var(--green); color:white; font-weight:750; text-decoration:none; transition:transform .2s, background .2s; }
+    .nav-cta:hover,.button:hover { transform:translateY(-2px); background:var(--forest); }
+    .hero { position:relative; overflow:hidden; padding:76px 0 86px; background:var(--forest); color:white; }
+    .hero:before,.hero:after { content:""; position:absolute; border-radius:50%; pointer-events:none; }
+    .hero:before { width:560px;height:560px;right:-170px;top:-300px;background:radial-gradient(circle,#34764a 0,transparent 70%); }
+    .hero:after { width:410px;height:410px;right:5%;bottom:-330px;border:1px solid #ffffff20;box-shadow:0 0 0 46px #ffffff08,0 0 0 92px #ffffff06; }
+    .hero-grid { position:relative; z-index:1; display:grid; grid-template-columns:1.08fr .92fr; gap:55px; align-items:center; }
+    .eyebrow { display:inline-flex; gap:9px; align-items:center; color:#e7c76d; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    .eyebrow:before { content:""; width:25px; height:2px; background:var(--gold); }
+    h1 { max-width:680px; margin:18px 0 18px; font-size:clamp(42px,6vw,72px); line-height:1.02; letter-spacing:-.065em; }
+    .hero p { max-width:570px; margin:0; color:#d6e2d9; font-size:18px; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+    .button.light { background:#f6f8f6; color:var(--forest); }
+    .button.light:hover { background:white; }
+    .text-link { display:inline-flex; align-items:center; color:#f3dc99; font-weight:750; text-decoration:none; }
+    .text-link:hover { text-decoration:underline; }
+    .hero-note { margin-top:20px!important; font-size:13px!important; color:#aabbb0!important; }
+    .visual { position:relative; min-height:380px; display:grid; place-items:center; }
+    .orb { position:absolute; width:300px; height:300px; border-radius:50%; background:linear-gradient(145deg,#34764a,#1d5134); box-shadow:inset 0 1px #ffffff30,0 35px 80px #0004; }
+    .visual-card { position:relative; width:min(315px,90%); padding:25px; border:1px solid #ffffff35; border-radius:27px; background:#f6f8f6; color:var(--ink); transform:rotate(3deg); box-shadow:0 25px 70px #0005; }
+    .visual-card .small { color:var(--muted); font-size:12px; font-weight:700; }
+    .visual-card h2 { margin:5px 0 17px; font-size:26px; line-height:1.1; letter-spacing:-.04em; }
+    .visual-row { display:flex; align-items:center; gap:12px; padding:12px 0; border-top:1px solid var(--line); }
+    .visual-icon { display:grid; place-items:center; width:40px;height:40px;border-radius:13px;background:var(--mint);font-size:19px; }
+    .visual-row b { display:block; font-size:14px; }
+    .visual-row span { color:var(--muted); font-size:12px; }
+    .visual-badge { position:absolute; right:-28px; bottom:23px; padding:12px 16px; border:1px solid #fff8; border-radius:16px; background:#fff; color:var(--green); font-size:13px; font-weight:800; box-shadow:var(--shadow); transform:rotate(-4deg); }
+    main { padding:76px 0; }
+    .section-head { max-width:680px; margin-bottom:32px; }
+    .kicker { color:var(--green); font-size:12px; font-weight:850; letter-spacing:.14em; text-transform:uppercase; }
+    h2 { margin:8px 0 12px; color:var(--forest); font-size:clamp(30px,4vw,43px); line-height:1.12; letter-spacing:-.05em; }
+    .section-head p,.intro { margin:0; color:var(--muted); font-size:17px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; }
+    .card { padding:25px; border:1px solid var(--line); border-radius:var(--radius); background:var(--white); box-shadow:0 8px 28px #123c2a08; }
+    .icon { display:grid; place-items:center; width:48px;height:48px;margin-bottom:19px;border-radius:16px;background:var(--mint);font-size:22px; }
+    .card h3 { margin:0 0 7px; color:var(--forest); font-size:19px; letter-spacing:-.025em; }
+    .card p { margin:0; color:var(--muted); font-size:14px; }
+    .status { display:inline-flex; align-items:center; gap:7px; margin-bottom:16px; border-radius:99px; padding:6px 10px; background:#edf5ee; color:var(--green); font-size:11px; font-weight:850; letter-spacing:.06em; text-transform:uppercase; }
+    .status:before { content:""; width:7px;height:7px;border-radius:50%;background:#4a9c63; }
+    .roadmap { margin-top:84px; padding:45px; border-radius:32px; background:#edf2ed; }
+    .roadmap .section-head { margin-bottom:26px; }
+    .roadmap-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:13px; }
+    .roadmap-item { display:flex; gap:14px; padding:19px; border:1px solid #dce5dc; border-radius:18px; background:#ffffffb8; }
+    .roadmap-item .icon { flex:0 0 42px; width:42px;height:42px;margin:0;border-radius:14px;font-size:19px; }
+    .roadmap-item h3 { margin:0 0 4px; color:var(--forest); font-size:16px; }
+    .roadmap-item p { margin:0; color:var(--muted); font-size:13px; }
+    .future-label { display:inline-block; margin-top:7px; color:#95711d; font-size:10px; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+    .partner { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center; margin-top:84px; padding:38px 42px; border:1px solid #eadcae; border-radius:30px; background:linear-gradient(120deg,#fffdf6,#f7f1dc); }
+    .partner .kicker { color:#92701c; }
+    .partner h2 { font-size:32px; }
+    .partner p { max-width:720px; margin:0; color:#64604f; }
+    .partner-mark { display:grid; place-items:center; width:130px;height:90px; border-radius:20px; background:white; border:1px solid #efe6c9; color:#174a2b; font-size:17px; font-weight:900; letter-spacing:-.04em; box-shadow:0 10px 30px #6e561011; }
+    .disclosure { margin-top:16px!important; font-size:12px; line-height:1.55; color:#777363!important; }
+    .closing { margin-top:75px; padding:45px; border-radius:30px; background:var(--forest); color:white; text-align:center; }
+    .closing h2 { color:white; }
+    .closing p { max-width:620px; margin:0 auto 22px; color:#d6e2d9; }
+    .closing .button { background:var(--gold); color:var(--forest); }
+    footer { padding:24px 0 34px; color:var(--muted); font-size:13px; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:22px; }
+    footer a { color:var(--green); font-weight:700; text-decoration:none; }
+    @media(max-width:800px) { .hero-grid{grid-template-columns:1fr;gap:28px}.visual{min-height:330px}.grid{grid-template-columns:repeat(2,1fr)}.roadmap{padding:30px}.partner{grid-template-columns:1fr}.partner-mark{width:120px;height:72px} }
+    @media(max-width:560px) { .wrap{width:min(100% - 28px,1120px)}.nav{padding:15px 0}.nav-links{gap:12px}.nav-links a:not(.nav-cta){display:none}.nav-cta{padding:10px 14px;font-size:13px}.hero{padding:56px 0 62px}.hero p{font-size:16px}.visual{min-height:300px}.orb{width:240px;height:240px}.visual-card{width:285px;padding:21px}.visual-badge{right:-9px}main{padding:56px 0}.grid,.roadmap-grid{grid-template-columns:1fr}.roadmap{margin-top:60px;padding:23px}.partner{margin-top:60px;padding:27px}.closing{margin-top:55px;padding:32px 22px}.card{padding:22px} }
+    @media(prefers-reduced-motion:reduce) { html{scroll-behavior:auto}*,*:before,*:after{transition:none!important} }
   </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="brand" href="#" aria-label="Sorty, accueil"><span class="brand-mark">S</span><span>sorty</span></a>
+      <div class="nav-links">
+        <a href="#app">L’application</a>
+        <a href="#suite">La suite</a>
+        <a class="nav-cta" href="mailto:contactsorty.app@gmail.com">Nous contacter</a>
+      </div>
+    </nav>
+  </div>
 
-  <!-- HERO -->
-
-  <header>
-    <div class="logo">S</div>
-
-    <h1>Découvre ton prochain événement</h1>
-
-    <p>
-      Concert, spectacle, festival, sport ou sortie culturelle :
-      Sorty t'aide à trouver ce qui se passe près de chez toi.
-    </p>
-
-    <a class="hero-button" href="#evenements">
-      Découvrir les sorties
-    </a>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Les idées de sortie, simplement</span>
+        <h1>Et si tu trouvais enfin quoi faire&nbsp;?</h1>
+        <p>Sorty rassemble des idées d’événements pour t’aider à découvrir ta prochaine sortie, près de chez toi ou dans la ville de ton choix.</p>
+        <div class="hero-actions">
+          <a class="button light" href="#app">Découvrir Sorty <span aria-hidden="true">&nbsp;↓</span></a>
+          <a class="text-link" href="#billetterie">Voir les billetteries partenaires&nbsp;→</a>
+        </div>
+        <p class="hero-note">Application en évolution — certaines fonctions sont encore en test et de nouvelles arrivent progressivement.</p>
+      </div>
+      <div class="visual" aria-label="Illustration des catégories de sorties proposées par Sorty">
+        <div class="orb"></div>
+        <div class="visual-card">
+          <span class="small">UNE ENVIE DE SORTIR ?</span>
+          <h2>À toi de choisir.</h2>
+          <div class="visual-row"><span class="visual-icon">🎭</span><div><b>Une sortie à découvrir</b><span>Explore les événements</span></div></div>
+          <div class="visual-row"><span class="visual-icon">📍</span><div><b>Autour de toi</b><span>Recherche par ville ou proximité</span></div></div>
+          <div class="visual-row"><span class="visual-icon">💚</span><div><b>À garder en favori</b><span>Retrouve tes idées plus tard</span></div></div>
+        </div>
+        <div class="visual-badge">SORS · VIS · PROFITE</div>
+      </div>
+    </div>
   </header>
 
-
-  <main>
-
-    <!-- SORTY -->
-
-    <section>
-      <h2>🎉 Sorty, c'est quoi ?</h2>
-
-      <p>
-        Sorty est une application dédiée à la découverte d'événements.
-        Notre objectif est simple : réunir au même endroit les sorties
-        disponibles dans différentes villes et permettre de trouver
-        rapidement une activité qui vous correspond.
-      </p>
-
-      <div class="categories">
-        <div class="category">🎵 Concerts</div>
-        <div class="category">🎭 Spectacles</div>
-        <div class="category">🎉 Festivals</div>
-        <div class="category">⚽ Sports</div>
-        <div class="category">🏛️ Culture</div>
-        <div class="category">🎟️ Billetterie</div>
+  <main class="wrap">
+    <section id="app">
+      <div class="section-head">
+        <span class="kicker">La version de test</span>
+        <h2>Une façon plus simple de choisir sa sortie.</h2>
+        <p>Sorty évolue au fil des essais. Voici les outils déjà présents dans l’application de test.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><span class="status">Disponible en test</span><div class="icon">📍</div><h3>Recherche par ville et autour de soi</h3><p>Parcours les événements à partir d’une ville ou de ta position, selon les réglages de ton appareil.</p></article>
+        <article class="card"><span class="status">Disponible en test</span><div class="icon">🧭</div><h3>Explorer et filtrer</h3><p>Découvre les sorties par catégories et retrouve des événements ponctuels ou sur plusieurs jours.</p></article>
+        <article class="card"><span class="status">Disponible en test</span><div class="icon">💚</div><h3>Favoris et j’aime</h3><p>Garde les événements qui te plaisent et consulte les compteurs de j’aime affichés dans l’application.</p></article>
+        <article class="card"><span class="status">Disponible en test</span><div class="icon">🌙</div><h3>Mode sombre</h3><p>Choisis une interface plus confortable le soir, y compris sur les principaux écrans de découverte.</p></article>
+        <article class="card"><span class="status">Disponible en test</span><div class="icon">🎟️</div><h3>Accès aux billetteries</h3><p>Quand un lien de réservation est disponible, Sorty t’envoie vers la billetterie concernée pour consulter l’offre.</p></article>
+        <article class="card"><span class="status">Disponible en test</span><div class="icon">👤</div><h3>Compte Sorty</h3><p>La création de compte et la synchronisation des favoris sont en cours d’essai avec les services de compte associés.</p></article>
       </div>
     </section>
 
+    <section class="partner" id="billetterie">
+      <div>
+        <span class="kicker">Billetterie affiliée</span>
+        <h2>BilletRéduc est accessible depuis Sorty.</h2>
+        <p>Sorty est inscrit au programme d’affiliation BilletRéduc via Awin. Lorsqu’un événement dispose d’un lien adapté, tu peux poursuivre vers BilletRéduc pour consulter les informations et réserver directement auprès de leur service.</p>
+        <p class="disclosure">Certains liens sont des liens affiliés. Sorty peut recevoir une commission si un achat éligible est réalisé après un clic. La réservation, le paiement et les conditions de vente restent gérés par BilletRéduc.</p>
+      </div>
+      <div class="partner-mark" aria-label="BilletRéduc">BilletRéduc</div>
+    </section>
 
-    <!-- COMMENT ÇA MARCHE -->
-
-    <section id="evenements">
-      <h2>🔎 Comment ça marche ?</h2>
-
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-number">1</div>
-
-          <h3>📍 Choisis ta ville</h3>
-
-          <p>
-            Recherche les événements dans ta ville ou autour de toi.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">2</div>
-
-          <h3>🎉 Trouve ton événement</h3>
-
-          <p>
-            Découvre les concerts, spectacles, festivals, sports
-            et autres sorties disponibles.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">3</div>
-
-          <h3>🎟️ Réserve</h3>
-
-          <p>
-            Lorsqu'une billetterie est disponible, accède au
-            partenaire pour réserver ton billet.
-          </p>
-        </div>
-
+    <section class="roadmap" id="suite">
+      <div class="section-head">
+        <span class="kicker">La feuille de route</span>
+        <h2>Sorty va continuer à s’enrichir.</h2>
+        <p>Ces pistes sont prévues ou à l’étude. Elles ne sont pas encore toutes disponibles dans l’application.</p>
+      </div>
+      <div class="roadmap-grid">
+        <article class="roadmap-item"><span class="icon">🎶</span><div><h3>Plus de concerts et de spectacles</h3><p>Élargir progressivement le catalogue et les sources pour proposer davantage de concerts, spectacles, festivals et sorties locales.</p><span class="future-label">Prévu — enrichissement du catalogue</span></div></article>
+        <article class="roadmap-item"><span class="icon">🗺️</span><div><h3>Plus de villes et de sources</h3><p>Étendre la couverture géographique et intégrer d’autres agendas et billetteries pour trouver plus d’idées près de chez soi.</p><span class="future-label">À développer</span></div></article>
+        <article class="roadmap-item"><span class="icon">👥</span><div><h3>Partager des sorties entre amis</h3><p>Préparer les invitations, les sorties de groupe et les votes pour décider ensemble.</p><span class="future-label">Prévu — nécessite la partie sociale</span></div></article>
+        <article class="roadmap-item"><span class="icon">✨</span><div><h3>Proposer ses propres événements</h3><p>Étudier la création d’événements par les utilisateurs, avec des outils de signalement et de modération.</p><span class="future-label">À concevoir</span></div></article>
+        <article class="roadmap-item"><span class="icon">🔔</span><div><h3>Des notifications utiles</h3><p>Réfléchir à des alertes personnalisées sur les sorties et événements qui intéressent chaque personne.</p><span class="future-label">À l’étude</span></div></article>
+        <article class="roadmap-item"><span class="icon">🤝</span><div><h3>D’autres billetteries partenaires</h3><p>Ajouter des liens de réservation quand les programmes et les événements correspondants sont disponibles.</p><span class="future-label">Au fil des partenariats</span></div></article>
       </div>
     </section>
 
-
-    <!-- BILLETTERIE -->
-
-    <section class="booking">
-
-      <h2>🎟️ Réserver un billet</h2>
-
-      <p>
-        Certains événements proposés sur Sorty peuvent nécessiter
-        l'achat d'un billet.
-      </p>
-
-      <div class="booking-box">
-
-        <h3>Une billetterie directement depuis Sorty</h3>
-
-        <p>
-          Lorsqu'une billetterie partenaire est disponible,
-          Sorty vous redirige vers le site du partenaire afin
-          de consulter les disponibilités et effectuer votre réservation.
-        </p>
-
-        <!--
-          FUTUR LIEN AFFILIÉ
-
-          Le véritable lien de tracking du partenaire sera placé
-          ici lorsque le programme d'affiliation sera validé.
-
-          Exemple :
-          https://partenaire.com/...?tracking=...
-        -->
-
-        <a class="booking-button">
-          🎟️ Réserver un billet
-        </a>
-
-        <div class="notice">
-          Sorty ne vend pas directement les billets.
-          La réservation, le paiement et la gestion des billets
-          sont effectués sur le site du partenaire.
-        </div>
-
-      </div>
-
+    <section class="closing">
+      <span class="eyebrow">Une idée, une ville, une sortie</span>
+      <h2>La prochaine sortie commence ici.</h2>
+      <p>Sorty est un projet en développement. Tu as une question, une suggestion ou tu souhaites parler partenariat&nbsp;?</p>
+      <a class="button" href="mailto:contactsorty.app@gmail.com">Écrire à Sorty</a>
     </section>
-
-
-    <!-- PARTENAIRES -->
-
-    <section class="partner">
-
-      <h2>🤝 Nos partenaires</h2>
-
-      <p>
-        Sorty pourra proposer des liens vers différentes plateformes
-        de billetterie afin de faciliter l'accès aux réservations
-        des événements.
-      </p>
-
-      <div class="notice">
-        Les liens vers les partenaires pourront être des liens
-        d'affiliation. Sorty peut recevoir une commission lorsqu'un
-        utilisateur effectue un achat éligible après avoir suivi
-        un lien partenaire. Le prix payé par l'utilisateur
-        n'est pas nécessairement augmenté.
-      </div>
-
-    </section>
-
-
-    <!-- APPLICATION -->
-
-    <section>
-
-      <h2>📱 L'application Sorty</h2>
-
-      <p>
-        L'application Sorty est actuellement en développement.
-        Elle a pour objectif de permettre de rechercher des événements
-        par ville, catégorie et localisation, puis de consulter
-        les informations pratiques de chaque événement.
-      </p>
-
-      <div class="notice">
-        🚀 De nouvelles fonctionnalités seront ajoutées progressivement.
-      </div>
-
-    </section>
-
   </main>
 
-
-  <!-- FOOTER -->
-
   <footer>
-
-    <p>
-      © 2026 Sorty — Tous droits réservés.
-    </p>
-
-    <p style="margin-top: 8px;">
-      Découvrir des événements simplement.
-    </p>
-
+    <div class="wrap footer-inner">
+      <span>© 2026 Sorty · Projet en développement</span>
+      <a href="mailto:contactsorty.app@gmail.com">contactsorty.app@gmail.com</a>
+      <span>Sors. Vis. Profite.</span>
+    </div>
   </footer>
-
 </body>
 </html>
